@@ -1,5 +1,6 @@
 #include <iostream>
 #include "matrix.h"
+#include "matrix_ops.h"
 #include <vector>
 #include <initializer_list>
 
@@ -11,31 +12,14 @@ ostream& operator<<(ostream &o, const Matrix<T> &a) {
 }
 
 int main() {
-    vector<float> a1 = {0, 1};
-    vector<float> a2 = {2, 3};
-    vector<float> a3 = {4, 5};
-    vector<vector<float> > av = {a1, a2, a3};
-    Matrix<float> a = Matrix<float>(av);
+    Matrix<double> a = Matrix<double>::ones(3, 3);
+    Matrix<double> b = Matrix<double>::zeros(3, 3);
+    Matrix<double> c = Matrix<double>::init_matrix(2, 7, 3.2);
 
-    vector<float> b1 = {6, 7, 8};
-    vector<float> b2 = {9, 10, 11};
-    vector<vector<float> > bv = {b1, b2};
-    Matrix<float> b = Matrix<float>(bv);
-
-    vector<vector<float> > cv = {{6, 7, 8}, {12, 11, 10}};
-    Matrix<float> c = Matrix<float>(cv);
-
-    cout << b << endl;
-    b.transpose();
     cout << a << endl;
     cout << b << endl;
-    cout << a+5.0f << endl;
-    cout << (a+b);
-    cout << endl;
-    cout << (a^2.0f);
-    cout << endl;
-    cout << c;
-    cout << endl;
-    cout << c.num_rows() << " " << c.num_cols() << endl;
+    cout << append(a, b, 0) << endl;
+    cout << append(a, b, 1) << endl;
+    cout << c << endl;
     return 0;
 }
